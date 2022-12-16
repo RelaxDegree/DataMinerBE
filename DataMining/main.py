@@ -38,6 +38,9 @@ def facade(ftype, support, confidence, fileName):
         liftRPList, cosineRPList = pa.calculateLiftAndCosine()
         allConfidencedRPList = pa.calculateAllConfidenced()
         KulczynskiRPList = pa.calculateKulczynski()
+        lenth = len(data)
+        data['size'] = lenth
+        return data, liftRPList, cosineRPList, allConfidencedRPList, KulczynskiRPList
     elif ftype == 'FP-growth':
         # print(data)
         fp = fp_growth.FPGrowth(datas=data, support=support, confidence=confidence)

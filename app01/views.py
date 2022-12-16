@@ -58,9 +58,9 @@ def showResult(request):
         dic['lift'] = lift[i].assessmentOfQuantity
         dic['cosine'] = cosine[i].assessmentOfQuantity
         dic['allConfidenced'] = allConfidenced[i].assessmentOfQuantity
-        dic['Kulczynski'] = kulczynski[i].assessmentOfQuantity
-        dic['frontItemSets'] = lift[i].frontItemSets
-        dic['latterItemSets'] = lift[i].latterItemSets
+        dic['kulczynski'] = kulczynski[i].assessmentOfQuantity
+        dic['front'] = lift[i].frontItemSets
+        dic['latter'] = lift[i].latterItemSets
         # dic['']
         # print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
         lst.append(dic)

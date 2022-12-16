@@ -19,7 +19,7 @@ class TheRomanceOfThreeKingdomsDataPreprocessing:
                     '安民',
                     '张曰', '文武', '白旗', '祖宗', '寻思'}  # 排除的词汇
 
-        with open('../processingData/threeKingdoms.txt', 'r', encoding='UTF-8') as novelFile:
+        with open('E:\\pythonProject\Miner\\processingData\\threeKingdoms.txt', 'r', encoding='UTF-8') as novelFile:
             novel = novelFile.read()
         novelList = re.split(r'([。？！])', novel)
         recordList = []
@@ -33,7 +33,7 @@ class TheRomanceOfThreeKingdomsDataPreprocessing:
         print("*********************************************************************************")
         # print(recordList)
         # 导入停词文件
-        stopwords = [line.strip() for line in open('../stop.txt', 'r', encoding='UTF-8').readlines()]
+        stopwords = [line.strip() for line in open('E:\\pythonProject\Miner\\stop.txt', 'r', encoding='UTF-8').readlines()]
         # 每一句话去除停词以及需要排除的词三国里面的词
         temp = []
         result = []

@@ -10,17 +10,17 @@ import re
 class TheNationalCongressDataPreprocessing:
     def dataPreprocessing(self, flag=1):
         if flag == 1:
-            data_set = '../eighttenNationalCongressOfCommunistPartyOfChina .txt'
-            data_Write = '../res/PreprocessedEighttenNationalCongress'
+            data_set = 'E:\\pythonProject\Miner\\eighttenNationalCongressOfCommunistPartyOfChina .txt'
+            data_Write = 'E:\\pythonProject\Miner\\res/PreprocessedEighttenNationalCongress'
         elif flag == 2:
-            data_set = 'E:\\pythonProject\\FreqSetDataMining\\ninehttenNationalCongressOfCommunistPartyOfChina.txt'
-            data_Write = 'E:\\pythonProject\\FreqSetDataMining\\res\PreprocessedNineteenNationalCongress'
+            data_set = 'E:\\pythonProject\Miner\\ninehttenNationalCongressOfCommunistPartyOfChina.txt'
+            data_Write = 'E:\\pythonProject\Miner\\res\PreprocessedNineteenNationalCongress'
         elif flag == 3:
-            data_set = 'E:\\pythonProject\\FreqSetDataMining\\twentiethNationalCongressOfCommunistPartyOfChina.txt'
-            data_Write = 'E:\\pythonProject\\FreqSetDataMining\\res\ProcessedTwentiethNationalCongress.txt'
+            data_set = 'E:\\pythonProject\Miner\\twentiethNationalCongressOfCommunistPartyOfChina.txt'
+            data_Write = 'E:\\pythonProject\Miner\\res\ProcessedTwentiethNationalCongress.txt'
         elif flag == 4:
-            data_set = 'E:\\pythonProject\\FreqSetDataMining\\converge.txt'
-            data_Write = 'E:\\pythonProject\\FreqSetDataMining\\res\PreprocessedConverge.txt'
+            data_set = 'E:\\pythonProject\Miner\\converge.txt'
+            data_Write = 'E:\\pythonProject\Miner\\res\PreprocessedConverge.txt'
         elif flag == 5:
             return self.dataPreprocessing()
         with open(data_set, 'r', encoding='UTF-8') as novelFile:
@@ -38,7 +38,7 @@ class TheNationalCongressDataPreprocessing:
 
         # 导入停词文件
         stopwords = [line.strip() for line in
-                     open('../stop.txt',
+                     open('E:\\pythonProject\\Miner\\stop.txt',
                           'r', encoding='UTF-8').readlines()]
 
         # print(wordList)
