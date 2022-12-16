@@ -78,17 +78,17 @@ class PatternAssess:
         # print("Lift：", lift)  # >1，后越大二者正关联性越强
         # print("IS:", cosine)  # 越接近1二者关联性越强
         # sorted(liftRPList, key=attrgetter("assessmentOfQuantity"))
-        print("提升度： \n")
+        # print("提升度： \n")
         liftRPList.sort()
-        for item in liftRPList[:self.offset]:
-            print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
-        print(
-            "*********************************************************************************************************")
-        print("IS度量： \n")
+        # for item in liftRPList[:self.offset]:
+        #     print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
+        # print(
+        #     "*********************************************************************************************************")
+        # print("IS度量： \n")
         cosineRPList.sort()
-        for item in cosineRPList[:self.offset]:
-            print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
-
+        # for item in cosineRPList[:self.offset]:
+        #     print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
+        return liftRPList, cosineRPList
     # 计算全置信度
     def calculateAllConfidenced(self):
         allConfidencedRPList = []

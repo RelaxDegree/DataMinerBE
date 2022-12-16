@@ -28,13 +28,13 @@ class TheNationalCongressDataPreprocessing:
         novelList = re.split(r'([。？！；\n\u3000])', novel)
         # print(novelList[1:20])
         recordList = []
-        print(novelList)
+        # print(novelList)
 
         # 针对每一句话进行分词
         for item in novelList:
             if item != '\n' and item != ' ' and item != '' and item != '。' and item != '\u3000':
                 recordList.append(jieba.lcut(item))
-        print(recordList)
+        # print(recordList)
 
         # 导入停词文件
         stopwords = [line.strip() for line in
@@ -54,7 +54,7 @@ class TheNationalCongressDataPreprocessing:
             temp = []
 
         recordList = result
-        print(recordList)
+        # print(recordList)
         lenRecordList = len(recordList)
         processedData = {}
 

@@ -37,21 +37,23 @@ def facade(ftype, support, confidence, fileName):
         pa.calculateLiftAndCosine()
         pa.calculateAllConfidenced()
         pa.calculateKulczynski()
-    else:
+    elif ftype == 'FP-growth':
         # print(data)
         fp = fp_growth.FPGrowth(datas=data, support=support, confidence=confidence)
         # print("频繁模式树为：")
         # fp.fp_tree_root_point.print()
-        print("频繁项集", fp.freq_set)
+        # print("频繁项集", fp.freq_set)
         # print("未格式化的关联规则",fp.relate_rule)
         print(util_m.relate_rules2str(fp.relate_rule))
         print("下面是模式评估相关量：**********************************************************************************")
         pa = PatternAssess(data, fp.relate_rule)
-        pa.calculateLiftAndCosine()
+        liftRPList, cosineRPList = pa.calculateLiftAndCosine()
         pa.calculateAllConfidenced()
         pa.calculateKulczynski()
-        print()
-
+        # print()
+        lenth = len(data)
+        data['size'] = lenth
+        return data, fp.freq_set, liftRPList, cosineRPList
 '''
 对于病人数据集结果不错的参数有 : 2 0.3 0.7 ;
 购物篮1: 2 0.02 0.025

@@ -17,6 +17,10 @@ def respondDataToFront(preData):
     return JsonResponse(data=data, safe=False)
 
 
+lift = []
+cosine = []
+
+
 @csrf_exempt
 def process(request):
     # data = json.loads(request.body)
@@ -25,13 +29,30 @@ def process(request):
     support = request.GET.get("support")
     confident = request.GET.get("confident")
     alg = request.GET.get("alg")
-    print(fileName, float(support), float(confident), alg)
     preData = {}
-    lst = ['11', '22', '33', '44']
 
-    preData['node'] = 'welcome'
-    preData['lst'] = lst
-    facade(alg, float(support), float(confident), fileName)
+    tabledata, freq, liftList, cosineList = facade(alg, float(support), float(confident), fileName)
+    print(type(liftList))
+    global lift
+    lift.extend(liftList)
+    preData['tabledata'] = tabledata
+    # preData['freq'] = freq
+    return HttpResponse(respondDataToFront(preData))
+
+
+def showResult(request):
+    preData = {}
+    global lift
+    lst = []
+    for item in lift[:30]:
+        dic = {}
+        dic['assessmentOfQuantity'] = item.assessmentOfQuantity
+        dic['frontItemSets'] = item.frontItemSets
+        dic['latterItemSets'] = item.latterItemSets
+        # print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
+        lst.append(dic)
+    preData['lift'] = lst
+
     return HttpResponse(respondDataToFront(preData))
 
 # def next
