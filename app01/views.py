@@ -19,6 +19,8 @@ def respondDataToFront(preData):
 
 lift = []
 cosine = []
+allConfidenced = []
+kulczynski = []
 
 
 @csrf_exempt
@@ -31,10 +33,16 @@ def process(request):
     alg = request.GET.get("alg")
     preData = {}
 
-    tabledata, freq, liftList, cosineList = facade(alg, float(support), float(confident), fileName)
+    tabledata, liftList, cosineList, allConfidencedList, kulczynskiList = facade(alg, float(support), float(confident), fileName)
+
+    print("这里是process")
     print(type(liftList))
-    global lift
+    global lift, cosine, allConfidenced, kulczynski
     lift.extend(liftList)
+    print(lift)
+    cosine.extend(cosineList)
+    allConfidenced.extend(allConfidencedList)
+    kulczynski.extend(kulczynskiList)
     preData['tabledata'] = tabledata
     # preData['freq'] = freq
     return HttpResponse(respondDataToFront(preData))
@@ -42,17 +50,27 @@ def process(request):
 
 def showResult(request):
     preData = {}
-    global lift
+    # global lift
     lst = []
-    for item in lift[:30]:
+    print(lift)
+    for i in range(len(lift)):
         dic = {}
-        dic['assessmentOfQuantity'] = item.assessmentOfQuantity
-        dic['frontItemSets'] = item.frontItemSets
-        dic['latterItemSets'] = item.latterItemSets
+        dic['lift'] = lift[i].assessmentOfQuantity
+        dic['cosine'] = cosine[i].assessmentOfQuantity
+        dic['allConfidenced'] = allConfidenced[i].assessmentOfQuantity
+        dic['Kulczynski'] = kulczynski[i].assessmentOfQuantity
+        dic['frontItemSets'] = lift[i].frontItemSets
+        dic['latterItemSets'] = lift[i].latterItemSets
+        # dic['']
         # print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
         lst.append(dic)
-    preData['lift'] = lst
+    print("这里是showResult")
+    # for item in lst:
+    #     print(item)
+    preData['patternAccess'] = lst
 
     return HttpResponse(respondDataToFront(preData))
 
+
 # def next
+# facade("Apriori", 0.02, 0.7, ' fileName')

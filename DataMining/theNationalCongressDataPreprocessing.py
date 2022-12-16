@@ -10,8 +10,8 @@ import re
 class TheNationalCongressDataPreprocessing:
     def dataPreprocessing(self, flag=1):
         if flag == 1:
-            data_set = 'E:\\pythonProject\\FreqSetDataMining\\eighttenNationalCongressOfCommunistPartyOfChina .txt'
-            data_Write = 'E:\\pythonProject\\FreqSetDataMining\\res\PreprocessedEighttenNationalCongress'
+            data_set = '../eighttenNationalCongressOfCommunistPartyOfChina .txt'
+            data_Write = '../res/PreprocessedEighttenNationalCongress'
         elif flag == 2:
             data_set = 'E:\\pythonProject\\FreqSetDataMining\\ninehttenNationalCongressOfCommunistPartyOfChina.txt'
             data_Write = 'E:\\pythonProject\\FreqSetDataMining\\res\PreprocessedNineteenNationalCongress'
@@ -38,7 +38,7 @@ class TheNationalCongressDataPreprocessing:
 
         # 导入停词文件
         stopwords = [line.strip() for line in
-                     open('E:\\pythonProject\\FreqSetDataMining\\stop.txt',
+                     open('../stop.txt',
                           'r', encoding='UTF-8').readlines()]
 
         # print(wordList)

@@ -73,22 +73,24 @@ class PatternAssess:
             tempcosine = PAB / (math.sqrt(PA * PB))
             liftRPList.append((RelationPrinciple().setValue(templift, key, value)))
             cosineRPList.append(RelationPrinciple().setValue(tempcosine, key, value))
+
             # lift.append(templift)
             # cosine.append(tempcosine)
         # print("Lift：", lift)  # >1，后越大二者正关联性越强
         # print("IS:", cosine)  # 越接近1二者关联性越强
         # sorted(liftRPList, key=attrgetter("assessmentOfQuantity"))
         # print("提升度： \n")
-        liftRPList.sort()
+        # # liftRPList.sort()
         # for item in liftRPList[:self.offset]:
         #     print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
         # print(
         #     "*********************************************************************************************************")
         # print("IS度量： \n")
-        cosineRPList.sort()
+        # # cosineRPList.sort()
         # for item in cosineRPList[:self.offset]:
         #     print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
         return liftRPList, cosineRPList
+
     # 计算全置信度
     def calculateAllConfidenced(self):
         allConfidencedRPList = []
@@ -97,12 +99,13 @@ class PatternAssess:
             allConfidencedRPList.append(
                 RelationPrinciple().setValue(self.PABList[k] / (max(self.PAList[k], self.PBList[k])), key, value))
             k += 1
-        allConfidencedRPList.sort()
-        print("*******************************************************************************************************")
-        print("全置信度： \n")
-        for item in allConfidencedRPList[:self.offset]:
-            print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
-        # print("all_confidenced:", allConfidenced)  # 越接近1二者关系越紧密
+        # allConfidencedRPList.sort()
+        # print("*******************************************************************************************************")
+        # print("全置信度： \n")
+        # for item in allConfidencedRPList[:self.offset]:
+        #     print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
+        # 越接近1二者关系越紧密
+        return allConfidencedRPList
 
     # 计算库尔钦ski度量
     def calculateKulczynski(self):
@@ -115,12 +118,13 @@ class PatternAssess:
             kulczynski.append(RelationPrinciple().setValue(
                 0.5 * (self.PABList[k] / self.PBList[k] + self.PABList[k] / self.PAList[k]), key, value))
             k += 1
-        kulczynski.sort()
-        print(
-            "*********************************************************************************************************")
-        print("库尔钦斯基度量： \n")
-        for item in kulczynski[:self.offset]:
-            print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
+        # kulczynski.sort()
+        # print(
+        #     "*********************************************************************************************************")
+        # print("库尔钦斯基度量： \n")
+        # for item in kulczynski[:self.offset]:
+        #     print(item.assessmentOfQuantity, "  ", item.frontItemSets, "--->", item.latterItemSets)
+        return kulczynski
 
 # liftRPList = [RelationPrinciple(),RelationPrinciple(),RelationPrinciple()]
 # liftRPList[0].setValue(50,"x1","x2")
