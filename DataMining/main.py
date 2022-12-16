@@ -16,11 +16,11 @@ def facade(ftype, support, confidence, fileName):
     theNationalCongressDataPreprocessing = TheNationalCongressDataPreprocessing()
     threeKingdomsDataProcess = TheRomanceOfThreeKingdomsDataPreprocessing()
     cwf = CountWordFrequency()
-    print("请输入\n"
-          "选择频繁模式挖掘算法（1：Apriori  2：fp-growth）\n"
-          "支持度 置信度(0,1)\n"
-          "以空格分隔 如：“2 0.05 0.05 "
-          "输入#退出")
+    # print("请输入\n"
+    #       "选择频繁模式挖掘算法（1：Apriori  2：fp-growth）\n"
+    #       "支持度 置信度(0,1)\n"
+    #       "以空格分隔 如：“2 0.05 0.05 "
+    #       "输入#退出")
 
     # data = preprocessPatientDataHarshly()
     # data = preprocessPatientDataMoreDetailedly()
