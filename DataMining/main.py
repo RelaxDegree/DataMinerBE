@@ -11,6 +11,7 @@ from DataMining.patternAssess import PatternAssess
 import pandas as pd
 from DataMining.shoppingBasketDataProcess import preprocessShoppingtData2
 
+
 def facade(ftype, support, confidence, fileName):
     # data = patientDataPreprocessing()
     theNationalCongressDataPreprocessing = TheNationalCongressDataPreprocessing()
@@ -34,9 +35,9 @@ def facade(ftype, support, confidence, fileName):
         # print(apr.freq_set)
         print(util_m.relate_rules2str(apr.rel_rules))
         pa = PatternAssess(data, apr.rel_rules)
-        pa.calculateLiftAndCosine()
-        pa.calculateAllConfidenced()
-        pa.calculateKulczynski()
+        liftRPList, cosineRPList = pa.calculateLiftAndCosine()
+        allConfidencedRPList = pa.calculateAllConfidenced()
+        KulczynskiRPList = pa.calculateKulczynski()
     elif ftype == 'FP-growth':
         # print(data)
         fp = fp_growth.FPGrowth(datas=data, support=support, confidence=confidence)
@@ -48,12 +49,14 @@ def facade(ftype, support, confidence, fileName):
         print("下面是模式评估相关量：**********************************************************************************")
         pa = PatternAssess(data, fp.relate_rule)
         liftRPList, cosineRPList = pa.calculateLiftAndCosine()
-        pa.calculateAllConfidenced()
-        pa.calculateKulczynski()
+        allConfidencedRPList = pa.calculateAllConfidenced()
+        KulczynskiRPList = pa.calculateKulczynski()
         # print()
         lenth = len(data)
         data['size'] = lenth
-        return data, fp.freq_set, liftRPList, cosineRPList
+        return data,  liftRPList, cosineRPList, allConfidencedRPList, KulczynskiRPList
+
+
 '''
 对于病人数据集结果不错的参数有 : 2 0.3 0.7 ;
 购物篮1: 2 0.02 0.025
