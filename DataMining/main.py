@@ -24,10 +24,13 @@ def facade(ftype, support, confidence, fileName):
     #       "输入#退出")
 
     # data = preprocessPatientDataHarshly()
-    # data = preprocessPatientDataMoreDetailedly()
+    data = preprocessPatientDataMoreDetailedly()
     # data = insurenceDataProcessing()
-    # data = threeKingdomsDataProcess.dataPreprocessing()
-    data = theNationalCongressDataPreprocessing.dataPreprocessing()
+    # data1 = threeKingdomsDataProcess.dataPreprocessing()
+    # data = {}
+    # for i in range(1, 100):
+    #     data[i] = data1[i]
+    # data = theNationalCongressDataPreprocessing.dataPreprocessing()
     # data = preprocessShoppingtData2()
     # print('这里时预处理后的数据', data)
     if ftype == "Apriori":

@@ -41,7 +41,7 @@ def preprocessPatientDataHarshly(flag=1):
 
 def preprocessPatientDataMoreDetailedly(flag=1):
     initialData = pd.read_csv(
-        "../ProcessedData/patient2.csv",
+        "ProcessedData/patient2.csv",
         encoding='utf-8',
         sep=',')
     initialData = initialData.values
@@ -54,7 +54,7 @@ def preprocessPatientDataMoreDetailedly(flag=1):
     length = len(keyAttr)
     print(length)
     for item in initialData:
-        item[0] = keyAttr[0] + ": " + handleAge(item[0])
+        item[0] = str(keyAttr[0] + ": " + handleAge(item[0]))
         item[1] = keyAttr[1] + ": " + handleGender(item[1])
         for j in range(2, length - 1):
             item[j] = keyAttr[j] + ": " + handleLevel(item[j])
@@ -62,7 +62,8 @@ def preprocessPatientDataMoreDetailedly(flag=1):
     # print("这里是重新命名后的" + initialData)
     processedData = {}
     for i in range(len(initialData)):
-        processedData[i] = initialData[i]
+        tmp = []
+        processedData[i] = list(initialData[i])
     for item in processedData.values():
         print(item)
     return processedData
@@ -101,13 +102,13 @@ def handleLevel(attr):
 
 def xlsx_to_csv_pd():
     data_xls = pd.read_excel(
-        '../处理后癌症病人数据.xlsx',
+        '处理后癌症病人数据.xlsx',
         index_col=0)  # 输入xlsx文件名
-    data_xls.to_csv('../ProcessedData/patient.csv', encoding='utf-8')  # 输出csv文件名
+    data_xls.to_csv('ProcessedData/patient.csv', encoding='utf-8')  # 输出csv文件名
     data_xls = pd.read_excel(
-        '../processingData/cancerPatientDataSets.xlsx',
+        'processingData/cancerPatientDataSets.xlsx',
         index_col=0)  # 输入xlsx文件名
-    data_xls.to_csv('../ProcessedData/patient2.csv', encoding='utf-8')  # 输出csv文件名
+    data_xls.to_csv('ProcessedData/patient2.csv', encoding='utf-8')  # 输出csv文件名
 
 
 if __name__ == '__main__':
